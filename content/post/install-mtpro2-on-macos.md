@@ -1,7 +1,7 @@
 ---
 tags:
   - LaTeX
-date: 2019-11-08
+date: 2019-11-27
 title: macOS 上安装 MathTime Professional 2 字体
 ---
 
