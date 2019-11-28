@@ -1,0 +1,9 @@
+[en]
+  title = "Happiest Site"
+  languageName = "English"
+  weight = 1
+
+[cn]
+  title = "Happiest Site"
+  languageName = "中文"
+  weight = 2
