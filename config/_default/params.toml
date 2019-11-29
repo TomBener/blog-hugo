@@ -46,7 +46,7 @@ enableThemeChange = true
 themeOptions = ["dark", "light", "hacker", "solarized", "custom"]
 
 # comment
-enableComment = true
+enableComment = false
 disqus_shortname = ""
 commento = false
 
