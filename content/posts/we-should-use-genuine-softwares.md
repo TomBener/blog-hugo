@@ -9,8 +9,7 @@ featured_image: "feature3/cyber-monday-black-friday.png"
 
 
 
-
-[[TOC]]
+[TOC]
 
 
 假设你有 12 元人民币，给你 2 个选择：
