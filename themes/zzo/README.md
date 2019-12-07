@@ -1,5 +1,7 @@
 # Zzo theme for Hugo
 
+🚨🚨🚨Minimum Hugo version changed to 0.60.0. This version changed the markdown rendering library, so if you are using an older version, it may not be compatible.🚨🚨🚨
+
 Thank you for click me!. Zzo theme is a blog theme powered by Hugo with free(always), and many features. 
 
 ## Table of contents
@@ -36,7 +38,7 @@ Thank you for click me!. Zzo theme is a blog theme powered by Hugo with free(alw
 
 ## Minimum Hugo version
 
-Hugo version 0.58.0 or higher is required.
+Hugo version 0.60.0 or higher is required.
 
 ## Installation
 
@@ -94,34 +96,41 @@ root
 2. config.toml
 
 ```bash
-baseURL = "http://example.org/"
-title = "Hugo Zzo Theme"
-theme = "zzo"
+baseURL = "http://example.org/" # The URL of your site.
+title = "Hugo Zzo Theme" # Title of your site
+theme = "zzo" # Name of Zzo theme folder in `themes/`.
 
-defaultContentLanguage = "en"
-defaultContentLanguageInSubdir = true
-hasCJKLanguage = true
+defaultContentLanguage = "en" # Default language to use (if you setup multilingual support)
+defaultContentLanguageInSubdir = true # baseURL/en/, baseURL/kr/ ...
+hasCJKLanguage = true # Set `true` for Chinese/Japanese/Korean languages.
 
 summaryLength = 70
 
-copyright = "&copy;{year}, All Rights Reserved"
+copyright = "&copy;{year}, All Rights Reserved" # copyright symbol: $copy; current year: {year}
 timeout = 10000
 enableEmoji = true
-paginate = 13
+paginate = 13 # Number of items per page in paginated lists.
 rssLimit = 100
 
 pygmentsOptions = "linenos=table"
-pygmentsCodefences = true
 pygmentsUseClasses = true
-pygmentsCodefencesGuessSyntax = true
+
+googleAnalytics = ""
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
 
 [outputs]
-  home = ["HTML", "RSS", "JSON", "WebAppManifest"]
+  home = ["HTML", "RSS", "JSON", "WEBMANIFEST"]
 
 [mediaTypes."application/manifest+json"]
   suffixes = ["webmanifest"]
 
-[outputFormats.WebAppManifest]
+[outputFormats.webmanifest]
+  name = "webmanifest"
+  baseName = "webmanifest"
   mediaType = "application/manifest+json"
   rel = "manifest"
 
@@ -195,26 +204,29 @@ You shoud make your own menu.
 5. params.toml
 
 ```bash
-logoText = "Zzo"
-description = "The Zzo theme for Hugo example site."
-custom_css = []
-custom_js = []
+logoText = "Zzo" # site navigation bar logo text.
+description = "The Zzo theme for Hugo example site." # for SEO
+custom_css = [] # custom_css = ["scss/custom.scss"] and then make file at root/assets/scss/custom.scss
+custom_js = [] # custom_js = ["js/custom.js"] and then make file at root/assets/js/custom.js
 
 # header
-homeHeaderType = "slide" # text, img, slide
+homeHeaderType = "text" # text, img, slide
+
+# navbar
+enableThemeChange = true # site color theme
 
 # body
-enableBreadcrumb = true
-enablePhotoSwipe = true
-enableSearch = true
-enableGoToTop = true
-enableWhoami = true
+enableBreadcrumb = true # breadcrumb for list, single page
+enablePhotoSwipe = true # image viewer for gallery, single page
+enableSearch = true # site search with lunr
+enableGoToTop = true # scroll to top
+enableWhoami = true # at the end of single page
 summaryShape = "classic" # card, classic, compact
 archiveGroupByDate = "2006" # "2006-01": group by month, "2006": group by year
-archivePaginate = 13
-paginateWindow = 1
+archivePaginate = 13 # items per page
+paginateWindow = 1 # setting it to 1 gives 7 buttons, 2 gives 9, etc. If set 1: [1 ... 4 5 6 ... 356] [1 2 3 4 5 ... 356] etc
 
-# whoami
+# whoami: usage - home page sidebar, single page bottom of post. all values can be empty
 myname = "zzossig"
 email = "zzossig@gmail.com"
 whoami = "Web Developer"
@@ -224,27 +236,33 @@ organization = "Hugo"
 link = "https://github.com/zzossig/hugo-theme-zzo"
 
 # sidebar
-enableBio = true
-enableSidebar = true
-enableSidebarTags = true
+enableBio = true # home page sidebar
+enableSidebar = true # if you want to make full width of contents
+enableSidebarTags = true # if you want to use tags.
 enableSidebarSeries = true
 enableSidebarCategories = true
-enableToc = true
-enableTocSwitch = true
-itemsPerCategory = 5
-searchLanguages = ['en']
+enableToc = true # single page table of contents
+enableTocSwitch = true # single page table of contents visibility switch
+itemsPerCategory = 5 # maximum number of posts shown in the sidebar.
+searchLanguages = ['en'] # lunr multilanguage search. https://github.com/MihaiValentin/lunr-languages
 
 # footer
-showPoweredBy = true
-showFeedLinks = true
-showSocialLinks = true
-enableLangChange = true
-enableThemeChange = true
-themeOptions = ["dark", "light", "hacker", "solarized", "custom"]
+showPoweredBy = true # show footer text: Powered by Hugo and Zzo theme
+showFeedLinks = true # RSS Feed 
+showSocialLinks = true # email, facebook, twitter ...
+enableLangChange = true # show button at bottom left of footer.
+themeOptions = ["dark", "light", "hacker", "solarized", "custom"] # select options for site color theme
+
+# service
+baiduAnalytics = "" # china, alternative of google analytics
+enableBusuanzi = false # if set true, total page view, total unique visitors show up in the sidebar.
+busuanziSiteUV = true # unique visitors (total number of visitors)
+busuanziSitePV = true # site total page view count
+busuanziPagePV = true # post view count
 
 # comment
 enableComment = true
-disqus_shortname = ""
+disqus_shortname = "" 
 commento = false
 
 [gitment]          # Gitment is a comment system based on GitHub issues. see https://github.com/imsun/gitment
@@ -289,11 +307,7 @@ commento = false
   scriptSrc = "" # "https://isso.example.com/js/embed.min.js"
   dataAttrs = "" # "data-isso='https://isso.example.com' data-isso-require-author='true'"
 
-[marketing]
-  google_analytics = ""
-  google_tag_manager = ""
-
-[socialOptions]
+[socialOptions] # if set, social icons will show up.
   email = "mailto:your@email.com"
   facebook = "http://example.org/"
   twitter = "http://example.org/"
@@ -307,6 +321,15 @@ commento = false
   linkedin = ""
   pinterest = ""
   stack-exchange = ""
+  telegram = ""
+  steam = ""
+
+[donationOptions] 
+  enable = false # if set, donation button will show up in the single page.
+  alipay = "" # Alipay QR Code image (example path: images/donation/alipay-qrcode.png) and put your file at root/static/images/donation/
+  wechat = "" # Wechat pay QR Code image (example path: same as above)
+  paypal = "" # Paypal URL
+  patreon = "" # Patreon URL
 ```
 
 ## Layout
@@ -495,7 +518,7 @@ assets/scss/custom.scss
 assets/css/custom.css
 ```
 
-3. If you want to modify zzo theme's default color, you should override the theme style. For example, if you want to change the body background-color, because I set the background-color in #body selector, not in body tag selector, you should override body background-color there. body tag selector won't work. And make sure to set !important.
+3. If you want to modify zzo theme's default color, you should override the theme style. For example, if you want to change the body background-color, because I set the background-color in #body selector, not in body tag selector, you should override body background-color there. body tag selector won't work. And make sure to set !important. After set the values, restart hugo.
 
 ```css
 assets/scss/custom.scss or assets/css/custom.css
@@ -529,23 +552,15 @@ assets/js/custom.js
 
 1. Make a skin.toml file in data folder. (data/skin.toml)
 
-2. Copy the contents of themes/zzo/data/skin.toml file and paste it into the skin.toml file you created above.
+2. Set custom_theme_primary_color variable. The range of value that can be set is from "0" to "359".
 
-3. Change the color you want.
-
-4. Edit config/_default/params.toml file. The option name must be custom.
-
-```bash
-...
-themeOptions = ["custom", "dark", ...]
-...
-```
+3. Restart hugo.
 
 5. Once you change the skin.toml file, restart hugo.
 
 ### custom syntax highlighting
 
-1. Make a skin.toml file at root/data folder. Set the chroma_theme value as you want. Refer this [link](https://xyproto.github.io/splash/docs/all.html). If chroma_theme include - or _ like special character, just delete it.
+1. Make a skin.toml file at root/data folder. Set the chroma_theme value as you want. Refer this [link](https://xyproto.github.io/splash/docs/all.html). If chroma_theme value include - or _ like special character, just delete it.
 For example, if you want use solarized-dark256 style, set the param like this.
 ```
 root/data/skin.toml
@@ -579,32 +594,31 @@ You may want to change home page header. There are 4 options which is slider, im
 ---
 header:
   - type: text
-    height: 235
+    height: 200
     paddingX: 50
     paddingY: 0
-    align: left
+    align: center
     title:
-      - header title1
-      - header title2
+      - HUGO
     subtitle:
-      - header subtitle1
-      - header subtitle2
+      - The world’s fastest framework for building websites
     titleFontSize: 44
     subtitleFontSize: 16
     spaceBetweenTitleSubtitle: 20
   
   - type: img
-    image: images/header/background.png
+    imageSrc: images/header/background.jpg # your image file path: root/static/images/header/background.jpg
+    imageSize: cover # auto|length|cover|contain|initial|inherit
+    imageRepeat: no-repeat # repeat|repeat-x|repeat-y|no-repeat|initial|inherit
+    imagePosition: center # x% y%| xpos ypos| left top| center bottom| ...
     height: 235
     paddingX: 50
     paddingY: 0
     align: center
     title:
-      - header title1
-      - header title2
+      -
     subtitle:
-      - header subtitle1
-      - header subtitle2
+      -
     titleFontSize: 44
     subtitleFontSize: 16
     spaceBetweenTitleSubtitle: 20
@@ -615,7 +629,10 @@ header:
       - paddingX: 50
         paddingY: 0
         align: left
-        image: images/header/background.png
+        imageSrc: images/header/background.jpg
+        imageSize: cover
+        imageRepeat: no-repeat
+        imagePosition: center
         title:
           - header title1
         subtitle:
@@ -627,7 +644,10 @@ header:
       - paddingX: 50
         paddingY: 0
         align: center
-        image: images/header/background.png
+        imageSrc: images/header/background.jpg
+        imageSize: cover
+        imageRepeat: no-repeat
+        imagePosition: center
         title:
           - header title2
         subtitle:
@@ -639,7 +659,10 @@ header:
       - paddingX: 50
         paddingY: 0
         align: right
-        image: images/header/background.png
+        imageSrc: images/header/background.jpg
+        imageSize: cover
+        imageRepeat: no-repeat
+        imagePosition: center
         title:
           - header title3
         subtitle:
@@ -675,6 +698,55 @@ grid_column_gap_width = "32"
 grid_column_gap_unit = "px" # "px"
 grid_navbar_height = "50px" # "px"
 grid_row_gap = "0"
+```
+
+### custom font
+
+1. Add custom css file
+
+```bash
+config/_default/params.toml
+
+...
+custom_css = ["css/font.css"]
+...
+```
+
+Set the above param and add file to assets/css/font.css
+
+2. In your font.css file, add font-face something like this.
+
+```css
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/montserrat-black.woff2') format('woff2'),
+         url('../fonts/montserrat-black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Merriweather';
+    src: url('../fonts/merriweather-regular.woff2') format('woff2'),
+         url('../fonts/merriweather-regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+```
+
+3. Add your fonts file at root/static/fonts/myfont.xxx (If your url in step2 is ('../fonts/myfont.xxx')).
+
+4. Make a font.toml file at root/data/font.toml and make params as below.
+
+```toml
+title_font = "\"Montserrat\", sans-serif"
+content_font = "\"Merriweather\", serif"
+```
+
+5. Another approach
+Make a file at root/layouts/partials/head/custom.html and then load font style. 
+```html
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:400,700&display=swap&subset=korean" rel="stylesheet">
 ```
 
 ## External Library
@@ -721,13 +793,14 @@ You can add some config option parameters at data/flowchartjs.json
 ### img
 
 ```bash
-{{% img src="https://example.com" title="Image4" caption="Image description" alt="image alt" %}}
+// path: static/images/whoami/avatar.jpg
+{{< img src="/images/whoami/avatar.jpg" title="Image4" caption="Image description" alt="image alt" >}} // you can set width, height also
 ```
 
 ### notice
 
 ```bash
-{{% notice note %}}
+{{% notice note %}} # note, info, tip, warning
 A notice disclaimer
 {{% /notice %}}
 ```

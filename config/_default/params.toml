@@ -45,6 +45,13 @@ enableLangChange = true
 enableThemeChange = true
 themeOptions = ["dark", "light", "hacker", "solarized", "custom"]
 
+# service
+baiduAnalytics = ""
+enableBusuanzi = false
+busuanziSiteUV = true
+busuanziSitePV = true
+busuanziPagePV = true
+
 # comment
 enableComment = false
 disqus_shortname = ""
@@ -92,11 +99,7 @@ commento = false
   scriptSrc = "" # "https://isso.example.com/js/embed.min.js"
   dataAttrs = "" # "data-isso='https://isso.example.com' data-isso-require-author='true'"
 
-[marketing]
-  google_analytics = ""
-  google_tag_manager = ""
-
-[socialOptions]
+  [socialOptions]
   email = "mailto:me@tomben.me"
   twitter = "https://twitter.com/TomBener"
   github = "https://github.com/TomBener"
@@ -110,3 +113,12 @@ commento = false
   linkedin = ""
   pinterest = ""
   stack-exchange = ""
+  telegram = ""
+  steam = ""
+
+[donationOptions]
+  enable = false
+  alipay = "" 
+  wechat = ""
+  paypal = ""
+  patreon = ""

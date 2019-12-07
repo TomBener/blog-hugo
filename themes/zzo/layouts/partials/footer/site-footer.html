@@ -1,14 +1,14 @@
 <footer class="footer">
-    <div class="footer__wrapper">
-        {{ partial "footer/select-lang" . }}
-        {{ partial "footer/links-social.html" . }}        
-        {{ partial "footer/go-to-top" . }}
-    </div>
+    {{ partial "footer/select-lang" . }}
+    {{ partial "footer/links-social.html" . }}
+    {{ partial "footer/go-to-top" . }}
     <hr />
 
     {{ if $.Param "showPoweredBy" }}
     <div class="footer__poweredby">
-        {{ if $.Site.Copyright }}
+    {{ partial "footer/site-counter" . }}
+
+        {{ if $.Site.Copyright }}        
             <p class="caption">
                 {{ with $.Site.Copyright }}{{ replace . "{year}" now.Year | markdownify}}{{ end }}
             </p>

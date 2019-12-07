@@ -1,5 +1,5 @@
 ---
-title: "KaTeX support"
+title: "Katex support"
 date: 2019-11-15T12:00:06+09:00
 description: "KaTeX is a fast, easy-to-use JavaScript library for TeX math rendering on the web."
 tags:
@@ -16,7 +16,7 @@ featured_image: "feature2/mathbook.png"
 
 The following
 
-$$ \int_{a}^{b} x^2 \mathrm{d}x $$
+$$ \int_{a}^{b} x^2 dx $$
 
 Is an integral
 

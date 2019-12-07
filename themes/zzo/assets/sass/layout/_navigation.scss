@@ -26,11 +26,13 @@
   }
 
   &__slide-down {
-    @for $i from 1 through 8 {
-      &:nth-child(#{$i}) {
-        @include animation('slide-in-down .25s #{$i * .1}s 1 ease both');
+    @include respond-up(sm) {
+      @for $i from 1 through 8 {
+        &:nth-child(#{$i}) {
+          @include animation('slide-in-down .25s #{$i * .1}s 1 ease both');
+        }
       }
-    }
+    }    
   }
   
   &__brand {
@@ -126,6 +128,7 @@
   &__title {
     height: $grid_navbar_height;
     font-size: 1.5rem;
+    
     @include flexbox();
     @include align-items(center);        
     
@@ -156,7 +159,7 @@
       padding: 0.5rem;
       font-size: 1rem;
       font-family: $title-font;
-      font-weight: 400;
+      font-weight: 700;
 
       @include flexbox();
       @include align-items(center);
@@ -201,6 +204,7 @@
       @include themify($themes) {        
         border-top: 1px solid themed('navbar-border-bottom-color');
         background-color: themed('navbar-mobile-background-color');
+        border-bottom: 1px solid themed('navbar-border-bottom-color');
       }
     }
   }
@@ -241,10 +245,14 @@
       padding: 0.25rem 0.75rem;
       height: auto;
       margin: auto;
+      min-width: 40px;
+      max-width: 150px;
       text-decoration: none;
       display: block;
       font-size: 1rem;
+      font-weight: 700;
 
+      @include truncate(150px);
       @include themify($themes) {
         color: themed("dropdown-item-color");
         @include on-event {
@@ -261,6 +269,8 @@
 
       @include respond-to(sm) {
         padding-left: 2.5rem;
+        min-width: 100%;
+        max-width: 100%;
       }
     }
   }
@@ -336,6 +346,7 @@
       display: block;
       font-size: 1rem;
 
+      @include no-select;
       @include themify($themes) {
         color: themed("dropdown-item-color");
         @include on-event {
@@ -382,7 +393,6 @@
     @include flexbox();
     @include align-items(center);
     @include justify-content(flex-end);
-    
   }
 
   .dropdown {
@@ -396,7 +406,7 @@
       }      
     }
 
-    &-trigger {      
+    &-trigger {
       padding: 0.5rem;
       cursor: pointer;
       border: none;      
@@ -441,6 +451,7 @@
       display: block;
       font-size: 1rem;
 
+      @include no-select;
       @include themify($themes) {
         color: themed("dropdown-item-color");
         @include on-event {

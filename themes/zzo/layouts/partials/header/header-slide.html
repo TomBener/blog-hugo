@@ -5,11 +5,12 @@
     {{ if eq .type "slide" }}
       {{ $height := .height }}
       {{ range .slide }}
-        <div class="swiper-slide custom-header custom-header__align-{{ .align }}" style="background-image: url('{{.image | relURL }}'); height: {{ $height }}px;">
+        <div class="swiper-slide site-header site-header__align-{{ .align }}" style="background-image: url('{{ .imageSrc | relURL }}'); background-size: {{ .imageSize }};
+    background-repeat: {{ .imageRepeat }}; background-position: {{ .imagePosition }}; height: {{ $height }}px;">
           {{ $header := . }}
           {{ if .title }}            
             {{ range .title }}
-            <div class="custom-header__title" style="font-size: {{ $header.titleFontSize }}px; padding: {{ $header.paddingY }}px {{ $header.paddingX }}px;">
+            <div class="site-header__title" style="font-size: {{ $header.titleFontSize }}px; padding: {{ $header.paddingY }}px {{ $header.paddingX }}px;">
               {{ . }}
             </div>
             {{ end }}      
@@ -19,7 +20,7 @@
           {{ end }}
           {{ if .subtitle }}
             {{ range .subtitle }} 
-            <div class="custom-header__subtitle" style="font-size: {{ $header.subtitleFontSize }}px; padding: {{ $header.paddingY }}px {{ $header.paddingX }}px;">
+            <div class="site-header__subtitle" style="font-size: {{ $header.subtitleFontSize }}px; padding: {{ $header.paddingY }}px {{ $header.paddingX }}px;">
               {{ . }}
             </div>
             {{ end }}      
@@ -31,24 +32,13 @@
   </div>
   <div class="swiper-pagination"></div>
 </div>
-{{ else }}
-<div class="swiper-container">
-  <div class="swiper-wrapper">
-    {{ range $idx, $seq :=  (seq 3) }}
-      <div class="swiper-slide">
-        {{ partial (print "header/slide-" $seq) . }}
-      </div>
-    {{ end }}
-  </div>
-  <div class="swiper-pagination"></div>
-</div>
 {{ end }}
 
 {{ $js := .Site.Data.lib.js }}
 {{ $css := .Site.Data.lib.css }}
 
-{{ printf "<link rel=\"stylesheet\" href=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\">" $css.swiper.url $css.swiper.sri | safeHTML }}
-{{ printf "<script src=\"%s\" integrity=\"%s\" crossorigin=\"anonymous\" title=\"swiper\"></script>" $js.swiper.url $js.swiper.sri | safeHTML }}
+<link rel="stylesheet" href="{{  $css.swiper.url }}" integrity="{{ $css.swiper.sri }}" crossorigin="anonymous">
+<script src="{{ $js.swiper.url }}" integrity="{{ $js.swiper.sri }}" crossorigin="anonymous"></script>
 
 <script>
   {{ $swiper := .Site.Data.swiper }}

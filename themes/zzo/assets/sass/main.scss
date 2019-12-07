@@ -1,25 +1,26 @@
-{{- partial "functions/parse_theme" . -}}
-{{- partial "functions/parse_grid" . -}}
-{{- $scr := .Scratch -}}
+$grid_max_width: {{ .Site.Data.grid.grid_max_width }};
+$grid_max_unit: {{ .Site.Data.grid.grid_max_unit }};
+$grid_main_main_width: {{ .Site.Data.grid.grid_main_main_width }};
+$grid_main_main_unit: {{ .Site.Data.grid.grid_main_main_unit }};
+$grid_main_side_width: {{ .Site.Data.grid.grid_main_side_width }};
+$grid_main_side_unit: {{ .Site.Data.grid.grid_main_side_unit }};
+$grid_column_gap_width: {{ .Site.Data.grid.grid_column_gap_width }};
+$grid_column_gap_unit: {{ .Site.Data.grid.grid_column_gap_unit }};
+$grid_navbar_height: {{ .Site.Data.grid.grid_navbar_height }};
+$grid_row_gap: {{ .Site.Data.grid.grid_row_gap }};
 
-$grid_max_width: {{ $scr.Get "grid_max_width" }};
-$grid_max_unit: {{ $scr.Get "grid_max_unit" }};
-$grid_main_main_width: {{ $scr.Get "grid_main_main_width" }};
-$grid_main_main_unit: {{ $scr.Get "grid_main_main_unit" }};
-$grid_main_side_width: {{ $scr.Get "grid_main_side_width" }};
-$grid_main_side_unit: {{ $scr.Get "grid_main_side_unit" }};
-$grid_column_gap_width: {{ $scr.Get "grid_column_gap_width" }};
-$grid_column_gap_unit: {{ $scr.Get "grid_column_gap_unit" }};
-$grid_navbar_height: {{ $scr.Get "grid_navbar_height" }};
-$grid_row_gap: {{ $scr.Get "grid_row_gap" }};
+$custom_theme_primary_color: {{ .Site.Data.skin.custom_theme_primary_color }};
+$chroma_theme: {{ .Site.Data.skin.chroma_theme }};
 
-$custom_theme_primary_color: {{ $scr.Get "custom_theme_primary_color" }};
-$chroma_theme: {{ $scr.Get "chroma_theme" }};
+$title-font: {{ .Site.Data.font.title_font }};
+$content-font: {{ .Site.Data.font.content_font }};
 
 @import 'abstracts/variables';
 @import 'abstracts/mixins';
 @import 'abstracts/functions';
 @import 'abstracts/flexbox';
+
+@import 'syntax/syntax';
 
 @import 'base/reset';
 @import 'base/fonts';
@@ -30,6 +31,7 @@ $chroma_theme: {{ $scr.Get "chroma_theme" }};
 @import 'layout/navigation';
 @import 'layout/grid';
 @import 'layout/header';
+@import 'layout/body';
 @import 'layout/footer';
 @import 'layout/sidebar';
 
@@ -38,13 +40,11 @@ $chroma_theme: {{ $scr.Get "chroma_theme" }};
 @import 'components/breadcrumb';
 @import 'components/diagram';
 @import 'components/expand';
-@import 'components/features';
 @import 'components/gtt';
 @import 'components/hr';
 @import 'components/math';
 @import 'components/notice';
 @import 'components/pagination';
-@import 'components/photoswipe';
 @import 'components/related';
 @import 'components/search';
 @import 'components/summary';
@@ -54,14 +54,13 @@ $chroma_theme: {{ $scr.Get "chroma_theme" }};
 @import 'components/toc';
 @import 'components/tooltip';
 @import 'components/whoami';
+@import 'components/busuanzi';
+@import 'components/donation';
 
 @import 'pages/404';
 @import 'pages/about';
 @import 'pages/archive';
-@import 'pages/body';
 @import 'pages/gallery';
 @import 'pages/list';
 @import 'pages/single';
 @import 'pages/terms';
-
-@import 'syntax/syntax';
