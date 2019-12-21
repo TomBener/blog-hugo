@@ -1,6 +1,8 @@
 ---
 title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
-draft: true
+description: 
+type: contact
+service: formspree
+formId: ""
 ---
-

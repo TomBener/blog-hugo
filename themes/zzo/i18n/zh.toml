@@ -1,44 +1,44 @@
 [search-placeholder]
-other = "Search"
+other = "搜索"
 
 [summary-dateformat]
-other = "Jan 2, 2006"
+other = "2006年 01月 02日"
 
 [taxo-tags]
-other = "Tags"
+other = "标签"
 
 [taxo-categories]
-other = "Categories"
+other = "分类"
 
 [taxo-series]
-other = "Series"
+other = "系列"
 
 [archive-dateformat]
-other = "Jan 2"
+other = "01-02"
 
 [single-dateformat]
-other = "Jan 2, 2006"
+other = "2006年 01月 02日"
 
 [single-related]
-other = "See Also"
+other = "相关内容"
 
 [single-writtenBy]
-other = "WRITTEN BY"
+other = "作者"
 
 [toc-label]
-other = "What's on this Page"
+other = "目录"
 
 [counter-site-pv]
-other = "Total views"
+other = "总浏览"
 
 [counter-site-uv]
-other = "Total visitors"
+other = "总访客"
 
 [counter-page-pv]
 other = "views"
 
 [donate-message]
-other = "Support the author with"
+other = "您的鼓励是我最大的动力"
 
 [contact-name]
 other = "Name"
